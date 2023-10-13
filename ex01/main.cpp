@@ -1,10 +1,6 @@
-# include <iostream>
-# include <iomanip>
-
 #include "contact.hpp"
 
 Contact contact;
-
 
 int		control(std::string name, std::string text)
 {
@@ -29,11 +25,9 @@ int		control(std::string name, std::string text)
 	return(0);
 }
 
-
 int main(void)
 {
 	std::string str;
-
 
 	while (1)
 	{
@@ -67,14 +61,7 @@ int main(void)
 			std::getline(std::cin, darksecret);
 			if (control(darksecret, "Dark_secret"))
 				continue;		
-			//std::cout << last_name << std::endl;		
-
-			
 		}
-
-
-
-
 		else if (str == "SEARCH")
 		{
 			std::cout << "arda";
