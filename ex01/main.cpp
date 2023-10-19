@@ -1,11 +1,12 @@
-#include "contact.hpp"
+#include "phonebook.hpp"
 
 Contact contact;
 
 int		control(std::string name, std::string text)
 {
 	std::string join;
-
+	std::cout << text + "-> ";
+	std::getline(std::cin, name);
 	if (name == "\0")
 	{
 		std::cout << "Please enter your " + text << std::endl;
@@ -27,7 +28,10 @@ int		control(std::string name, std::string text)
 
 int main(void)
 {
+	Phonebook phonebook;
 	std::string str;
+	std::string id;
+	int index = 0;
 
 	while (1)
 	{
@@ -35,44 +39,51 @@ int main(void)
 		std::getline(std::cin, str);
 		if (str == "ADD")
 		{
-			//Contact  contact;
 			std::string first_name;
-			std::cout << "First Name-> ";
-			std::getline(std::cin, first_name);
 			if (control(first_name, "First_name"))
 				continue;			
 			std::string last_name;
-			std::cout << "Last Name-> ";
-			std::getline(std::cin, last_name);
 			if (control(last_name, "Last_name"))
 				continue;
 			std::string nickname;
-			std::cout << "Nick Name-> ";
-			std::getline(std::cin, nickname);
 			if (control(nickname, "Nick_name"))
 				continue;
 			std::string phonenumber;
-			std::cout << "Phone_number-> ";
-			std::getline(std::cin, phonenumber);
 			if (control(phonenumber, "Phone_number"))
 				continue;
 			std::string darksecret;
-			std::cout << "Dark_secret-> ";
-			std::getline(std::cin, darksecret);
 			if (control(darksecret, "Dark_secret"))
-				continue;		
+				continue;
+			phonebook.addContact(contact, index);
+			index++;
+			if (index == 8)
+				index = 0;
 		}
 		else if (str == "SEARCH")
 		{
-			std::cout << "arda";
-			exit(0);
-
+			std::cout << "|   Index  |First Name| LastName | NickName |" << std::endl;
+			std::cout << "|----------|----------|----------|----------|" << std::endl;
+			phonebook.printList();
+			std::cout << "Enter id of contact -> ";
+			std::getline(std::cin, id);
+			if (id == "")
+			{
+				std::cout << "Id can not be empty!" << std::endl;
+				continue;
+			}
+			else if (!isdigit(id[0]))
+			{
+				std::cout << "Id must be a number!" << std::endl;
+				continue;
+			}
+			else if (std::stoi(id) < 1 || std::stoi(id) > 8)
+			{
+				std::cout << "Id must be betweeen 1 and 8!" << std::endl;
+				continue;
+			}
+			phonebook.printContact(std::stoi(id));
 		}
 		else if (str == "EXİT")
-		{
-			std::cout << "baran";
-			exit(0);
-		}
+			return(0);
 	}
-	
 }
