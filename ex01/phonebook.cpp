@@ -1,5 +1,13 @@
 #include "phonebook.hpp"
 
+Phonebook::Phonebook(void)
+{
+	for (int i = 0; i < 8; i++)
+	{
+		this->contacts[i] = Contact();
+	}
+}
+
 void	Phonebook::addContact(Contact contact, int index)
 {
 	this->contacts[index] = contact;
@@ -30,6 +38,7 @@ void	Phonebook::printList(void)
 	int	i;
 
 	i = 0;
+
 	while (this->contacts[i].getFirstname() != "")
 	{
 		std::cout << "|" << std::setw(10) << i + 1 << "|";
@@ -42,10 +51,12 @@ void	Phonebook::printList(void)
 		else
 			std::cout << std::setw(10) << this->contacts[i].getLastname() << "|";
 		if (this->contacts[i].getNickname().length() > 10)
-			std::cout << this->contacts[i].getNickname().substr(0, 9) << "." << "|";
+			std::cout << this->contacts[i].getNickname().substr(0, 9) << "." << "|" << std::endl;
 		else
 			std::cout << std::setw(10) << this->contacts[i].getNickname() << "|" << std::endl;
 		i++;
+		std::cout << "|----------|----------|----------|----------|" << std::endl;
+		if (i == 8)
+			break;
 	}
-	std::cout << "|----------|----------|----------|----------|" << std::endl;
 }

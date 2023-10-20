@@ -9,13 +9,7 @@ class Phonebook
 		Contact	contacts[8];
 
 	public:
-		Phonebook()
-		{
-			for (int i = 0; i < 8; i++)
-			{
-				this->contacts[i] = Contact();
-			}
-		}
+				Phonebook();
 		void	addContact(Contact contact, int index);
 		void	printContact(int id);
 		void	printList(void);

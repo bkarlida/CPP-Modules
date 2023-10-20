@@ -1,5 +1,10 @@
 #include "contact.hpp"
 
+Contact::Contact()
+{
+	
+}
+
 void    Contact::setFirst_name(std::string text)
 {
     this->firstname = text;

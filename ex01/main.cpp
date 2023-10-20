@@ -30,11 +30,11 @@ int main(void)
 {
 	Phonebook phonebook;
 	std::string str;
-	std::string id;
 	int index = 0;
 
 	while (1)
 	{
+		std::string id = "";
 		std::cout << "Phonebook$ ";
 		std::getline(std::cin, str);
 		if (str == "ADD")

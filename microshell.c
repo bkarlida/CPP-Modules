@@ -16,7 +16,7 @@ int cd(char **argv, int i)
     return 0;
 }
 
-int exec(char **argv, char **envp, int i) 
+int exec(char **argv, char **envp, int i)
 {
     int fd[2];
     int status;
@@ -39,14 +39,14 @@ int exec(char **argv, char **envp, int i)
     return WIFEXITED(status) && WEXITSTATUS(status);
 }
 
-int main(int argc, char **argv, char **envp) 
+int main(int argc, char **argv, char **envp)
 {
     int    i = 0;
     int    status = 0;
 
     if (argc > 1) 
     {
-        while (argv[i] && argv[++i]) 
+        while (argv[i] && argv[++i])
         {
             argv += i;
             i = 0;
